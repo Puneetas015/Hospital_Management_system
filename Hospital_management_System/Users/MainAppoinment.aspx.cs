@@ -1,0 +1,71 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+
+namespace Hospital_management_System.Users
+{
+    public partial class WebForm9 : System.Web.UI.Page
+    {
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+        SqlCommand cmd;
+        DataSet ds = new DataSet();
+        SqlDataAdapter da = new SqlDataAdapter();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                int id1 = 1;
+
+                string str1 = "select max(AID) as AID from AppontTab";
+                da = new SqlDataAdapter(str1, con);
+                da.Fill(ds);
+
+                if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Rows[0]["AID"] != DBNull.Value)
+                {
+                    id1 = int.Parse(ds.Tables[0].Rows[0]["AID"].ToString());
+                    id1++;
+                }
+
+                lbl_Appontment_no.Text = id1.ToString();
+            }
+        }
+
+        protected void btn_main_appointment_Submit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                con.Open();
+                string str = "insert into AppontTab (AID, Section, Name, Gender, Mobile, Email, Date) values (@AID, @Section, @Name, @Gender, @Mobile, @Email, @Date)";
+                cmd = new SqlCommand(str, con);
+                cmd.Parameters.AddWithValue("@AID", int.Parse(lbl_Appontment_no.Text));
+                cmd.Parameters.AddWithValue("@Section", DropDownList_Section.SelectedItem.Text);
+                cmd.Parameters.AddWithValue("@Name", txt_Appoint_name.Text);
+                cmd.Parameters.AddWithValue("@Gender", DropDownList_gender.SelectedItem.Text);
+                cmd.Parameters.AddWithValue("@Mobile", txt_Apoint_Mobile.Text);
+                cmd.Parameters.AddWithValue("@Email", txt_Apoint_Email.Text);
+                DateTime appDate = DateTime.ParseExact(datepicke.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                cmd.Parameters.AddWithValue("@Date", appDate);
+                cmd.ExecuteNonQuery();
+
+                Response.Write("<script>alert('Appointment Saved')</script>");
+            }
+            catch(Exception ex)
+            {
+                Response.Write(ex.ToString());
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,332 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="usermaster.Master.cs" Inherits="Hospital_management_System.Users.usermaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title> User Master</title>
+
+
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="keywords"  />
+    <script type="text/javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- Custom Theme files -->
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="all"/>
+    <!-- font-awesome icons -->
+    <link href="css/fontawesome-all.min.css" rel="stylesheet"/>
+    <!-- //Custom Theme files -->
+	<link href="css/minimal-slider.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" property="" />
+    <!-- online-fonts -->
+	<link href="//fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <!-- modern healthcare theme (loaded last so it overrides the legacy styles above) -->
+    <link href="css/theme-modern.css" type="text/css" rel="stylesheet" media="all"/>
+    <%--<asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>--%>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+
+             <!-- header -->
+        <script type="text/javascript">
+            // Applied immediately (before paint) so returning visitors don't see a flash of the wrong theme.
+            (function () {
+                var saved = null;
+                try { saved = localStorage.getItem('hm-theme'); } catch (ex) { }
+                if (saved === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            })();
+        </script>
+        <header class="hm-header">
+            <div class="hm-topbar">
+                <a class="hm-brand" href="Home.aspx">Puneet Hospital</a>
+
+                <button type="button" class="hm-nav-toggle" id="hm_navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+
+                <ul class="hm-topbar-right">
+                    <li>
+                        <button type="button" id="hm_themeToggle" class="hm-theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                            <span class="hm-theme-icon hm-theme-icon-sun">&#9728;</span>
+                            <span class="hm-theme-icon hm-theme-icon-moon">&#9789;</span>
+                        </button>
+                    </li>
+                    <li>
+                        <a class="hm-topbar-link" href="Loginpage.aspx">Sign In</a>
+                    </li>
+                    <li id="li_CheckAppointments" runat="server" visible="false">
+                        <a class="hm-topbar-link hm-topbar-link-admin" href="UpdateAppoinment.aspx">Check Appointments</a>
+                    </li>
+                </ul>
+            </div>
+
+            <nav class="hm-subnav" id="hm_subnav">
+                <ul class="hm-subnav-list">
+                    <li><a class="hm-subnav-link" href="Home.aspx">Home</a></li>
+                    <li><a class="hm-subnav-link" href="Appointment.aspx">Appointment</a></li>
+                    <li><a class="hm-subnav-link" href="About.aspx">About</a></li>
+                    <li><a class="hm-subnav-link" href="Gallery.aspx">Gallery</a></li>
+                    <li><a class="hm-subnav-link" href="Contact.aspx">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+                var root = document.documentElement;
+                var toggle = document.getElementById('hm_themeToggle');
+                if (toggle) {
+                    toggle.addEventListener('click', function () {
+                        var isDark = root.getAttribute('data-theme') === 'dark';
+                        if (isDark) {
+                            root.removeAttribute('data-theme');
+                            try { localStorage.setItem('hm-theme', 'light'); } catch (ex) { }
+                        } else {
+                            root.setAttribute('data-theme', 'dark');
+                            try { localStorage.setItem('hm-theme', 'dark'); } catch (ex) { }
+                        }
+                    });
+                }
+
+                var navToggle = document.getElementById('hm_navToggle');
+                var subnav = document.getElementById('hm_subnav');
+                if (navToggle && subnav) {
+                    navToggle.addEventListener('click', function () {
+                        var open = subnav.classList.toggle('hm-subnav-open');
+                        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                    });
+                }
+            });
+        </script>
+
+        <!-- main image slider container -->
+    <!-- end of main image slider container -->
+
+			<div>
+			    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+			</div>
+
+
+
+	
+
+	
+
+
+
+
+<!-- footer -->
+	<footer class="py-sm-5">
+		<div class="container">
+			<div class="row py-5">
+				<!-- footer grid1 -->
+				<div class="col-lg-3 col-sm-6 fv5-contact">
+					<h2 class="mb-4">Contact Us</h2>
+					<div class="fv3-contact mt-3">
+					
+						<span class="fas fa-home mr-2"></span>
+						<p>Surat - Gujrat</p>
+					</div>
+					<div class="fv3-contact mt-3">
+						<span class="fas fa-phone-volume mr-2"></span>
+						<p>+91 7016717303</p>
+					</div>
+					<div class="fv3-contact mt-3">
+						<span class="fas fa-envelope-open mr-2"></span>
+						<a href="#" class="text-secondary">punittiwari9427@gmail.com</a>
+					</div>
+				</div>
+				<!-- //footer grid1 -->
+				<!-- footer grid2 -->
+				<div class="col-lg-3  col-sm-6 footv3-left text-lg-center my-sm-0 mt-5">
+					<h3 class="mb-4">Opening Hours</h3>
+					<ul class="list-agileits">
+						<li>
+						
+						</li>
+						<li class="my-3">
+							
+						</li>
+						<li class="mb-3">
+						
+						</li>
+						
+					</ul>
+				</div>
+				<!-- //footer grid2 -->
+				<!-- footer grid3 -->
+				<div class="col-lg-3  col-sm-6 footv3-left text-lg-center my-lg-0 mt-sm-5 mt-5">
+					<h3 class="mb-4">Navigation</h3>
+					<ul class="list-agileits">
+						<li>
+							<a href="Home.aspx">
+								Home
+							</a>
+						</li>
+						<li class="my-3">
+							<a href="About.aspx">
+								About Us
+							</a>
+						</li>
+						<li class="mb-3">
+							<a href="Gallery.aspx">
+								Gallery
+							</a>
+						</li>
+						<li>
+							<a href="Contact.aspx">
+								Contact Us
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- //footer grid3 -->
+
+			
+			</div>
+			<div class="cpy-right text-center  pt-3">
+				
+				<div class="copyrightbottom">
+					<p class="text-secondary"> Puneet Hospital. Project Developed By:
+						<a href="#" class="text-white"> Puneet</a>
+					</p>
+				</div>
+				<div class="copyrighttop">
+					<ul>
+						<li>
+							<h4>Follow us on:</h4>
+						</li>
+						<li>
+							<a class="facebook" href="#">
+								<i class="fab fa-facebook-f"></i>
+							</a>
+						</li>
+						<li>
+							<a class="facebook" href="#">
+								<i class="fab fa-twitter"></i>
+							</a>
+						</li>
+						<li>
+							<a class="facebook" href="#">
+								<i class="fab fa-google-plus-g"></i>
+							</a>
+						</li>
+						<li>
+							<a class="facebook" href="#">
+								<i class="fab fa-pinterest-p"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<!-- //footer container -->
+	</footer>
+	<!-- //footer -->
+
+	
+	
+
+    <!-- //footer -->
+    <!-- js -->
+    <script src="js/jquery-2.2.3.min.js" type="text/javascript"></script>
+    <!-- //js -->
+	<script src="js/minimal-slider.js" type="text/javascript"></script>
+<!-- flexSlider (for testimonials) -->
+		<!-- Calendar -->
+				<link rel="stylesheet" href="css/jquery-ui.css" />
+				<script src="js/jquery-ui.js"></script>
+				  <script type="text/javascript">
+                      $(function () {
+                          $("#datepicker").datepicker();
+                      });
+                  </script>
+				<!-- //Calendar -->
+
+	<script defer src="js/jquery.flexslider.js" type="text/javascript"></script>
+	<script type="text/javascript">
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                start: function (slider) {
+                    $('body').removeClass('loading');
+                }
+            });
+        });
+    </script>
+	<!-- //flexSlider (for testimonials) -->
+
+    <!-- script for password match -->
+    <script type="text/javascript">
+        window.onload = function () {
+            document.getElementById("password1").onchange = validatePassword;
+            document.getElementById("password2").onchange = validatePassword;
+        }
+
+        function validatePassword() {
+            var pass2 = document.getElementById("password2").value;
+            var pass1 = document.getElementById("password1").value;
+            if (pass1 != pass2)
+                document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+            else
+                document.getElementById("password2").setCustomValidity('');
+            //empty string means no validation error
+        }
+    </script>
+    <!-- script for password match -->
+
+    <!-- start-smooth-scrolling -->
+    <script src="js/move-top.js" type="text/javascript"></script>
+    <script src="js/easing.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+
+    <!-- smooth-scrolling-of-move-up -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+        
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <script src="js/SmoothScroll.min.js" type="text/javascript"></script>
+
+    <script src="js/bootstrap.js" type="text/javascript"></script>
+
+
+        
+        </div>
+    </form>
+</body>
+</html>
